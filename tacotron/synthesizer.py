@@ -141,7 +141,7 @@ class Synthesizer:
 
 		else:
 			linears, mels, alignments, stop_tokens = self.session.run([self.linear_outputs, self.mel_outputs, self.alignments, self.stop_token_prediction], feed_dict=feed_dict)
-			
+
 			#Linearize outputs (1D arrays)
 			linears = [linear for gpu_linear in linears for linear in gpu_linear]
 			mels = [mel for gpu_mels in mels for mel in gpu_mels]
@@ -169,7 +169,8 @@ class Synthesizer:
 				wav = audio.inv_mel_spectrogram(mels[0].T, hparams)
 			audio.save_wav(wav, 'temp.wav', sr=hparams.sample_rate) #Find a better way
 
-			if platform.system() == 'Linux':
+			#if platform.system() == 'Linux':
+			if 1==1:
 				#Linux wav reader
 				os.system('aplay temp.wav')
 
@@ -195,7 +196,7 @@ class Synthesizer:
 				speaker_id = '<no_g>'
 				speaker_ids.append(speaker_id)
 
-   
+
 			npy_data = mel.reshape((-1,))
 			print("==================SAVING LPCNet FEATURES===================")
 			print(npy_data)

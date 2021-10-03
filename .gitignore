@@ -1,3 +1,6 @@
+*.f32
+*.npy
+*.wav
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -106,4 +109,3 @@ venv.bak/
 # Tacotron 2 oddities
 logs-*/
 training_data/
-
